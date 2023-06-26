@@ -561,21 +561,12 @@ namespace Backend_api.Controllers
             }
         }
 
-        [HttpPost]
-        [Route("trabajador/Insert")]
-        public async Task<ActionResult> InsertarTrabajadorAsync(int COMP_Codigo, string Tipo_trabajador, string Apellido_Paterno, string Apellido_Materno, string Nombres, string Identificacion, 
-            string Entidad_Bancaria, string CarnetIESS, string Direccion, string Telefono_Fijo, string Telefono_Movil, string Genero , string Nro_Cuenta_Bancaria, string Codigo_Categoria_Ocupacion,
-            string Ocupacion, string Centro_Costos, string Nivel_Salarial, string EstadoTrabajador, string Tipo_Contrato, string Tipo_Cese, string EstadoCivil, string TipodeComision, DateTime FechaNacimiento,
-            DateTime FechaIngreso, DateTime FechaCese, int PeriododeVacaciones, DateTime FechaReingreso, DateTime Fecha_Ult_Actualizacion, string EsReingreso, int BancoCTA_CTE, string Tipo_Cuenta, int RSV_Indem_Acumul,
-            int Año_Ult_Rsva_Indemni, int Mes_Ult_Rsva_Indemni, int FormaCalculo13ro, int FormaCalculo14ro, int BoniComplementaria, int BoniEspecial, int Remuneracion_Minima, int CuotaCuentaCorriente,
-            string Fondo_Reserva)
+        [HttpGet]
+        [Route("trabajador/GetPeriodoVacaciones")]
+        public async Task<ActionResult> GetPeriodoVacacionesAsync()
         {
-
             var httpClient = new HttpClient();
-
-            
-            var url = $"http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TrabajadorInsert?COMP_Codigo={COMP_Codigo}&Tipo_trabajador={Tipo_trabajador}&Apellido_Paterno={Apellido_Paterno}&Apellido_Materno={Apellido_Materno}&Nombres={Nombres}&Identificacion={Identificacion}&Entidad_Bancaria={Entidad_Bancaria}&CarnetIESS={CarnetIESS}&Direccion={Direccion}&Telefono_Fijo={Telefono_Fijo}&Telefono_Movil={Telefono_Movil}&Genero={Genero}&Nro_Cuenta_Bancaria={Nro_Cuenta_Bancaria}&Codigo_Categoria_Ocupacion={Codigo_Categoria_Ocupacion}&Ocupacion={Ocupacion}&Centro_Costos={Centro_Costos}&Nivel_Salarial={Nivel_Salarial}&EstadoTrabajador={EstadoTrabajador}&Tipo_Contrato={Tipo_Contrato}&Tipo_Cese={Tipo_Cese}&EstadoCivil={EstadoCivil}&TipodeComision={TipodeComision}&FechaNacimiento={FechaNacimiento}&FechaIngreso={FechaIngreso}&FechaCese={FechaCese}&PeriododeVacaciones={PeriododeVacaciones}&FechaReingreso={FechaReingreso}&Fecha_Ult_Actualizacion={Fecha_Ult_Actualizacion}&EsReingreso={EsReingreso}&BancoCTA_CTE={BancoCTA_CTE}&Tipo_Cuenta={Tipo_Cuenta}&RSV_Indem_Acumul={RSV_Indem_Acumul}&Año_Ult_Rsva_Indemni={Año_Ult_Rsva_Indemni}&Mes_Ult_Rsva_Indemni={Mes_Ult_Rsva_Indemni}&FormaCalculo13ro={FormaCalculo13ro}&FormaCalculo14ro={FormaCalculo14ro}&BoniComplementaria={BoniComplementaria}&BoniEspecial={BoniEspecial}&Remuneracion_Minima={Remuneracion_Minima}&CuotaCuentaCorriente={CuotaCuentaCorriente}&Fondo_Reserva={Fondo_Reserva}";
-
+            var url = "http://apiservicios.ecuasolmovsa.com:3009/api/Varios/PeriodoVacaciones";
             var response = await httpClient.GetAsync(url);
 
             if (response.IsSuccessStatusCode)
@@ -588,6 +579,169 @@ namespace Backend_api.Controllers
                 return BadRequest();
             }
         }
+
+        [HttpGet]
+        [Route("trabajador/GetTipoComision")]
+        public async Task<ActionResult> GetTipoComisionAsync()
+        {
+            var httpClient = new HttpClient();
+            var url = "http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TipoComision";
+            var response = await httpClient.GetAsync(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                return Ok(content);
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpGet]
+        [Route("trabajador/GetDecimoTerceroDecimoCuarto")]
+        public async Task<ActionResult> GetDecimoTerceroDecimoCuartoAsync()
+        {
+            var httpClient = new HttpClient();
+            var url = "http://apiservicios.ecuasolmovsa.com:3009/api/Varios/DecimoTerceroDecimoCuarto";
+            var response = await httpClient.GetAsync(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                return Ok(content);
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpGet]
+        [Route("trabajador/GetFondoReserva")]
+        public async Task<ActionResult> GetFondoReservaAsync()
+        {
+            var httpClient = new HttpClient();
+            var url = "http://apiservicios.ecuasolmovsa.com:3009/api/Varios/FondoReserva";
+            var response = await httpClient.GetAsync(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                return Ok(content);
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpGet]
+        [Route("trabajador/GetCategoriaOcupacional")]
+        public async Task<ActionResult> GetCategoriaOcupacionalAsync()
+        {
+            var httpClient = new HttpClient();
+            var url = "http://apiservicios.ecuasolmovsa.com:3009/api/Varios/CategoriaOcupacional";
+            var response = await httpClient.GetAsync(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                return Ok(content);
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpGet]
+        [Route("trabajador/GetNivelSalarial")]
+        public async Task<ActionResult> GetNivelSalarialAsync()
+        {
+            var httpClient = new HttpClient();
+            var url = "http://apiservicios.ecuasolmovsa.com:3009/api/Varios/NivelSalarial";
+            var response = await httpClient.GetAsync(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                return Ok(content);
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpPost]
+        [Route("trabajador/Insert")]
+        public async Task<ActionResult> InsertarTrabajadorAsync(int COMP_Codigo, string Tipo_trabajador, string Apellido_Paterno, string Apellido_Materno, string Nombres, string Identificacion,
+        string Entidad_Bancaria, string CarnetIESS, string Direccion, string Telefono_Fijo, string Telefono_Movil, string Genero, string Nro_Cuenta_Bancaria, string Codigo_Categoria_Ocupacion,
+        string Ocupacion, string Centro_Costos, string Nivel_Salarial, string EstadoTrabajador, string Tipo_Contrato, string Tipo_Cese, string EstadoCivil, string TipodeComision, DateTime FechaNacimiento,
+        DateTime FechaIngreso, DateTime FechaCese, int PeriododeVacaciones, DateTime FechaReingreso, DateTime Fecha_Ult_Actualizacion, string EsReingreso, string Tipo_Cuenta,
+        int FormaCalculo13ro, int FormaCalculo14ro, int BoniComplementaria, int BoniEspecial, int Remuneracion_Minima, string Fondo_Reserva)
+        {
+            var httpClient = new HttpClient();
+
+            var url = "http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TrabajadorInsert";
+
+            var requestData = new Dictionary<string, string>
+            {
+                { "COMP_Codigo", COMP_Codigo.ToString() },
+                { "Tipo_trabajador", Tipo_trabajador },
+                { "Apellido_Paterno", Apellido_Paterno },
+                { "Apellido_Materno", Apellido_Materno },
+                { "Nombres", Nombres },
+                { "Identificacion", Identificacion },
+                { "Entidad_Bancaria", Entidad_Bancaria },
+                { "CarnetIESS", CarnetIESS },
+                { "Direccion", Direccion },
+                { "Telefono_Fijo", Telefono_Fijo },
+                { "Telefono_Movil", Telefono_Movil },
+                { "Genero", Genero },
+                { "Nro_Cuenta_Bancaria", Nro_Cuenta_Bancaria },
+                { "Codigo_Categoria_Ocupacion", Codigo_Categoria_Ocupacion },
+                { "Ocupacion", Ocupacion },
+                { "Centro_Costos", Centro_Costos },
+                { "Nivel_Salarial", Nivel_Salarial },
+                { "EstadoTrabajador", EstadoTrabajador },
+                { "Tipo_Contrato", Tipo_Contrato },
+                { "Tipo_Cese", Tipo_Cese },
+                { "EstadoCivil", EstadoCivil },
+                { "TipodeComision", TipodeComision },
+                { "FechaNacimiento", FechaNacimiento.ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                { "FechaIngreso", FechaIngreso.ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                { "FechaCese", FechaCese.ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                { "PeriododeVacaciones", PeriododeVacaciones.ToString() },
+                { "FechaReingreso", FechaReingreso.ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                { "Fecha_Ult_Actualizacion", Fecha_Ult_Actualizacion.ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                { "EsReingreso", EsReingreso },
+                { "Tipo_Cuenta", Tipo_Cuenta },
+                { "FormaCalculo13ro", FormaCalculo13ro.ToString() },
+                { "FormaCalculo14ro", FormaCalculo14ro.ToString() },
+                { "BoniComplementaria", BoniComplementaria.ToString() },
+                { "BoniEspecial", BoniEspecial.ToString() },
+                { "Remuneracion_Minima", Remuneracion_Minima.ToString() },
+                { "Fondo_Reserva", Fondo_Reserva }
+            };
+
+            var content = new FormUrlEncodedContent(requestData);
+
+            var response = await httpClient.PostAsync(url, content);
+            var responseContent = await response.Content.ReadAsStringAsync();
+
+            if (responseContent.Contains("Ingreso Exitoso"))
+            {
+                return Ok("Ingreso Exitoso");
+            }
+            else
+            {
+                return BadRequest("Error en la API: " + responseContent);
+            }
+        }
+
 
         [HttpPost]
         [Route("trabajador/Edit")]
