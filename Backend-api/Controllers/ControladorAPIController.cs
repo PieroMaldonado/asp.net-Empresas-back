@@ -679,7 +679,7 @@ namespace Backend_api.Controllers
         [Route("trabajador/Insert")]
         public async Task<ActionResult> InsertarTrabajadorAsync(int COMP_Codigo, string Tipo_trabajador, string Apellido_Paterno, string Apellido_Materno, string Nombres, string Identificacion,
         string Entidad_Bancaria, string CarnetIESS, string Direccion, string Telefono_Fijo, string Telefono_Movil, string Genero, string Nro_Cuenta_Bancaria, string Codigo_Categoria_Ocupacion,
-        string Ocupacion, string Centro_Costos, string Nivel_Salarial, string EstadoTrabajador, string Tipo_Contrato, string Tipo_Cese, string EstadoCivil, string TipodeComision, DateTime FechaNacimiento,
+        string Ocupacion, string Centro_Costos, string Nivel_Salarial, string EstadoTrabajador, string Tipo_Contrato, string? Tipo_Cese, string EstadoCivil, string? TipodeComision, DateTime FechaNacimiento,
         DateTime FechaIngreso, DateTime FechaCese, int PeriododeVacaciones, DateTime FechaReingreso, DateTime Fecha_Ult_Actualizacion, string EsReingreso, string Tipo_Cuenta,
         int FormaCalculo13ro, int FormaCalculo14ro, int BoniComplementaria, int BoniEspecial, int Remuneracion_Minima, string Fondo_Reserva)
         {
